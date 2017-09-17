@@ -5,6 +5,7 @@
 #include <QBluetoothDeviceDiscoveryAgent>
 #include <QLowEnergyController>
 #include <QBluetoothUuid>
+#include <QLowEnergyService>
 
 class ble_linker : public QObject
 {
@@ -15,7 +16,7 @@ public:
     void startScanner();
     QLowEnergyController *controller;
     void createController(QBluetoothDeviceInfo info);
-
+    QLowEnergyService *service;
 signals:
     void deviceFound(QString deviceName, QString address);
 
@@ -25,6 +26,7 @@ public slots:
     void addDevice(const QBluetoothDeviceInfo &info);
     void deviceScanError(QBluetoothDeviceDiscoveryAgent::Error err);
     void addService(QBluetoothUuid uuid);
+    void detailsDiscovered(QLowEnergyService::ServiceState s);
 };
 
 #endif // BLE_LINKER_H
