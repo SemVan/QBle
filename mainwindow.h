@@ -20,7 +20,7 @@ private:
     ble_linker *linker;
     QList<QString> devices;
 private slots:
-    void newDevFound(QString devName);
+    void newDevFound(QString devName, QString address);
     void on_pushButton_clicked();
 };
 
