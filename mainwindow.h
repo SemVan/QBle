@@ -22,6 +22,9 @@ private:
 private slots:
     void newDevFound(QString devName, QString address);
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_4_clicked();
 };
 
 #endif // MAINWINDOW_H

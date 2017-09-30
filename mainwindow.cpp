@@ -29,3 +29,18 @@ void MainWindow::on_pushButton_clicked()
 {
     linker->startScanner();
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    linker->ledsOn();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    linker->ledsOff();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    linker->readLed();
+}

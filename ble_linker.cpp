@@ -55,23 +55,25 @@ void ble_linker::addService(QBluetoothUuid uuid) {
         service = controller->createServiceObject(uuid);
 
         connect(service, SIGNAL(stateChanged(QLowEnergyService::ServiceState)), this, SLOT(detailsDiscovered(QLowEnergyService::ServiceState)));
-
+        connect(service, SIGNAL(characteristicRead(QLowEnergyCharacteristic, QByteArray)), this, SLOT(charReadSuck(QLowEnergyCharacteristic, QByteArray)));
         service->discoverDetails();
     }
 
 }
 
 void ble_linker::detailsDiscovered(QLowEnergyService::ServiceState s) {
-    QList<QLowEnergyCharacteristic> list = service->characteristics();
+    char_list = service->characteristics();
 
 
-    for (int i=0; i<list.length(); i++) {
-        QList<QLowEnergyDescriptor> scripts = list.at(i).descriptors();
-        QByteArray value = list.at(i).value();
-        QString serName = QString::number(list.at(i).uuid().data1, 16);
+    for (int i=0; i<char_list.length(); i++) {
+        QList<QLowEnergyDescriptor> scripts = char_list.at(i).descriptors();
+        QByteArray value = char_list.at(i).value();
+        QString serName = QString::number(char_list.at(i).uuid().data1, 16);
         qDebug() << "Characterictic name "+serName;
-        qDebug() << "Value is "+QString::fromStdString(value.toStdString());
-        service->writeCharacteristic(list.at(i), QByteArray("0000"));
+
+        qDebug() << "Value is "+QByteArray::fromStdString(value.toStdString());
+
+
 
     }
 }
@@ -83,4 +85,25 @@ void ble_linker::createController(QBluetoothDeviceInfo info) {
     connect(controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(addService(QBluetoothUuid)));
     controller->connectToDevice();
 
+}
+
+void ble_linker::ledsOff() {
+    for (int i = 0; i<char_list.length(); i++) {
+        service->writeCharacteristic(char_list.at(i), QByteArray(1, 0));
+    }
+}
+
+void ble_linker::ledsOn() {
+    for (int i = 0; i<char_list.length(); i++) {
+        service->writeCharacteristic(char_list.at(i), QByteArray(1, 1));
+    }
+}
+
+
+void ble_linker::readLed() {
+    service->readCharacteristic(char_list.at(0));
+}
+
+void ble_linker::charReadSuck(const QLowEnergyCharacteristic &characteristic, const QByteArray &value) {
+    qDebug()<<"found";
 }

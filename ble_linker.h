@@ -17,6 +17,12 @@ public:
     QLowEnergyController *controller;
     void createController(QBluetoothDeviceInfo info);
     QLowEnergyService *service;
+    void ledsOn();
+    void ledsOff();
+    void readLed();
+
+private:
+    QList<QLowEnergyCharacteristic> char_list;
 signals:
     void deviceFound(QString deviceName, QString address);
 
@@ -27,6 +33,7 @@ public slots:
     void deviceScanError(QBluetoothDeviceDiscoveryAgent::Error err);
     void addService(QBluetoothUuid uuid);
     void detailsDiscovered(QLowEnergyService::ServiceState s);
+    void charReadSuck(const QLowEnergyCharacteristic &characteristic, const QByteArray &value);
 };
 
 #endif // BLE_LINKER_H
