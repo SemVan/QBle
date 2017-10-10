@@ -95,15 +95,19 @@ void ble_linker::ledsOff() {
 
 void ble_linker::ledsOn() {
     for (int i = 0; i<char_list.length(); i++) {
-        service->writeCharacteristic(char_list.at(i), QByteArray(1, 1));
+        service->writeCharacteristic(char_list.at(i), QByteArray(2, 1));
     }
 }
 
 
 void ble_linker::readLed() {
+    timer.start();
     service->readCharacteristic(char_list.at(0));
 }
 
 void ble_linker::charReadSuck(const QLowEnergyCharacteristic &characteristic, const QByteArray &value) {
-    qDebug()<<"found";
+    qDebug() << "found";
+    qDebug() << value;
+    int result = (int)value[1]*256 + (int)value[0];
+    sendNewResult((double)result);
 }

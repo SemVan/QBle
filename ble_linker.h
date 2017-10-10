@@ -6,6 +6,8 @@
 #include <QLowEnergyController>
 #include <QBluetoothUuid>
 #include <QLowEnergyService>
+#include <QElapsedTimer>
+
 
 class ble_linker : public QObject
 {
@@ -22,9 +24,11 @@ public:
     void readLed();
 
 private:
+    QElapsedTimer timer;
     QList<QLowEnergyCharacteristic> char_list;
 signals:
     void deviceFound(QString deviceName, QString address);
+    void sendNewResult(double newResult);
 
 public slots:
     void connectionEstablished();
