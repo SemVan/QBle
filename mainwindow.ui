@@ -14,102 +14,96 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ScanDevices</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>341</width>
-      <height>251</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>0</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>LEDs on</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>0</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>LEDs off</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>0</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Read LED 0</string>
-    </property>
-   </widget>
    <widget class="QCustomPlot" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>50</x>
       <y>90</y>
-      <width>671</width>
-      <height>231</height>
+      <width>721</width>
+      <height>371</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>0</y>
-      <width>99</width>
-      <height>27</height>
+      <x>50</x>
+      <y>10</y>
+      <width>80</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>ReadLedLoop</string>
+     <string>Start server</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QLCDNumber" name="lcdNumber">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>30</y>
-      <width>97</width>
-      <height>22</height>
+      <x>790</x>
+      <y>140</y>
+      <width>101</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>120</y>
+      <width>47</width>
+      <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>Loop</string>
+     <string>Sensor1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>240</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sensor 2</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber_2">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>260</y>
+      <width>101</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>360</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sensor 3</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber_3">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>380</y>
+      <width>101</width>
+      <height>71</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -119,7 +113,7 @@
      <x>0</x>
      <y>0</y>
      <width>1047</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
