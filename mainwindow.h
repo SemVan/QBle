@@ -39,6 +39,7 @@ private slots:
     void getNewResult(double newResult, int num);
     void on_pushButton_7_clicked();
     void deviceConnected();
+    void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

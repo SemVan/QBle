@@ -112,3 +112,13 @@ void MainWindow::writeLog(QString fileToSaveTo) {
 //    }
     tableOut.close();
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString directory=QApplication::applicationDirPath() + "//Data//";
+    QString temp=QFileDialog::getSaveFileName(this, "Sabe to", directory);
+
+    if (temp != "") {
+        qDebug()<<"norm";
+    }
+}
