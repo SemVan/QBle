@@ -40,8 +40,8 @@ void UDPServer::dataCame() {
 
 double UDPServer::fullMessageParser(QByteArray message) {
     message = message.mid(3,message.length()-3);
-    if (message.length()==6) {
-        for (int i=0; i<3; i++) {
+    if (message.length()==10) {
+        for (int i=0; i<5; i++) {
             sendDataToTheWorld(parseData(message.mid(i*2, 2)), i);
         }
     }

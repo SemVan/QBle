@@ -7,19 +7,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    linker = new ble_linker();
+    //linker = new ble_linker();
 
     //connect(linker, SIGNAL(sendNewResult(double, int)), this, SLOT(getNewResult(double, int)));
     currentResult = 0;
     max=0;
     initGraph();
 
-    //container = new DataContainer();
-    //container->init(ui->widget, 0);
-    for (int i=0; i<3; i++) {
+
+    for (int i=0; i<5; i++) {
         container.append(new DataContainer());
         container.at(i)->init(ui->widget, i);
     }
+    qDebug()<<"container length = "<<container.length();
 
 
 }
@@ -38,6 +38,8 @@ void MainWindow::initGraph() {
     displays.append(ui->lcdNumber);
     displays.append(ui->lcdNumber_2);
     displays.append(ui->lcdNumber_3);
+    displays.append(ui->lcdNumber_4);
+    displays.append(ui->lcdNumber_5);
 
     ui->widget->addGraph();
     ui->widget->graph(0)->setPen(QPen(QColor(255,0,0)));
@@ -51,15 +53,28 @@ void MainWindow::initGraph() {
     ui->widget->graph(2)->setPen(QPen(QColor(0,0,255)));
     ui->widget->graph(2)->setName("Sensor 3");
 
+    ui->widget->addGraph();
+    ui->widget->graph(3)->setPen(QPen(QColor(255,0,255)));
+    ui->widget->graph(3)->setName("Sensor 4");
+
+    ui->widget->addGraph();
+    ui->widget->graph(4)->setPen(QPen(QColor(0,255,255)));
+    ui->widget->graph(4)->setName("Sensor 5");
+
     ui->widget->legend->setVisible(true);
 
     ui->lcdNumber->setPalette(QColor(255,0,0));
     ui->lcdNumber_2->setPalette(QColor(0,255,0));
     ui->lcdNumber_3->setPalette(QColor(0,0,255));
+    ui->lcdNumber_4->setPalette(QColor(255,0,0));
+    ui->lcdNumber_5->setPalette(QColor(0,255,0));
+
 }
 
 
 void MainWindow::getNewResult(double newResult, int num) {
+
+    qDebug()<<"container num = "<<num;
     container.at(num)->addNew(newResult);
     container.at(num)->plotGraph();
     displays.at(num)->display(newResult);

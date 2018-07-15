@@ -6,6 +6,7 @@
 #include <qcustomplot.h>
 #include "udpserver.h"
 #include "datacontainer.h"
+#include <QDebug>
 
 
 namespace Ui {
